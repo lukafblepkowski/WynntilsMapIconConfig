@@ -19,11 +19,20 @@ public enum CombatKind {
     private final String name;
     private final Texture texture;
     private final String mapDataId;
+    private boolean hiddenOnMap;
 
     CombatKind(String name, Texture texture, String mapDataId) {
         this.name = name;
         this.texture = texture;
         this.mapDataId = mapDataId;
+        this.hiddenOnMap = false;
+    }
+
+    CombatKind(String name, Texture texture, String mapDataId, boolean hiddenOnMap) {
+        this.name = name;
+        this.texture = texture;
+        this.mapDataId = mapDataId;
+        this.hiddenOnMap = hiddenOnMap;
     }
 
     public String getName() {
@@ -36,6 +45,14 @@ public enum CombatKind {
 
     public String getMapDataId() {
         return mapDataId;
+    }
+
+    public boolean isHiddenOnMap() {
+        return hiddenOnMap;
+    }
+
+    public void setHiddenOnMap(boolean hiddenOnMap) {
+        this.hiddenOnMap = hiddenOnMap;
     }
 
     public static CombatKind fromString(String str) {

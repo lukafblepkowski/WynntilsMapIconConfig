@@ -106,11 +106,12 @@ public class PoiService extends Service {
     }
 
     public Stream<ServicePoi> getServicePois() {
-        return servicePois.stream();
+        return servicePois.stream().filter(poi -> !poi.getKind().isHiddenOnMap());
     }
 
     public Stream<CombatPoi> getCombatPois() {
-        return Stream.concat(combatPois.stream(), cavePois.stream());
+        return Stream.concat(combatPois.stream(), cavePois.stream())
+                .filter(poi -> !poi.getKind().isHiddenOnMap());
     }
 
     public Stream<GatheringNodePoi> getGatheringNodePois() {
